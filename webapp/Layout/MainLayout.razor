@@ -1,0 +1,49 @@
+﻿@inject IJSRuntime JS
+@inherits LayoutComponentBase
+<div class="page">
+    @*<div class="sidebar">
+    <NavMenu />
+    </div> *@
+
+    <main>
+        <div class="top-menu">
+            <button class="btn btn-primary" style="background-color:transparent;margin-right:10px;border-color:gray;" @onclick="Contact">Buy Domain</button>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<style>
+    .top-menu {
+        display: flex;
+        justify-content: flex-end; /* Aligns items to the right */
+        align-items: center; /* Vertically centers the items */
+        height: 60px;
+        background-color: #0E1222; /* Background color */
+        border-bottom: 1px solid #090904; /* Line color and size */
+        padding: 10px 0; /* Padding for the header */
+    }
+
+    .contact-link {
+        color: #EBD8C9; /* Makes the text white */
+        text-decoration: none; /* Removes the underline */
+        margin-right:50px;
+        font-family: 'Arial', sans-serif;
+        font-size:16px;
+    }
+
+        .contact-link:hover {
+            text-decoration: underline; /* Adds underline on hover, optional */
+        }
+</style>
+
+
+@{
+     async Task Contact()
+    {
+        await JS.InvokeVoidAsync("openEmailExtended", "v.carlucci@hotmail.com", "Bionforce.com");
+    }
+}
